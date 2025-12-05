@@ -1,0 +1,1117 @@
+
+PC@DESKTOP-1UFBFG0 MINGW64 ~/CSE420-Compiler_Design/Lab02_base (main)
+$ ./script.sh
+Generated the parser C file as well the header file
+y.tab.c: In function 'int yyparse()':
+y.tab.c:815:16: error: 'yylex' was not declared in this scope; did you mean 'yylen'?
+  815 | # define YYLEX yylex ()
+      |                ^~~~~
+y.tab.c:1475:16: note: in expansion of macro 'YYLEX'
+ 1475 |       yychar = YYLEX;
+      |                ^~~~~
+syntax_analyzer.y:88:43: error: base operand of '->' is not a pointer
+   88 |                 outlog<<$1->get_name()<<endl<<endl;
+      |                                           ^~
+syntax_analyzer.y:90:40: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+   90 |                 delete $1; // Free memory for temp symbol_info used for display
+      |                        ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:95:43: error: base operand of '->' is not a pointer
+   95 |                 outlog<<$1->get_name()<<endl<<endl;
+      |                                           ^~
+syntax_analyzer.y:97:40: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+   97 |                 delete $1; // Free memory for temp symbol_info used for display
+      |                        ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:102:86: error: base operand of '->' is not a pointer
+  102 |                                         current_func_return_type = $1->get_name();
+      |
+             ^
+syntax_analyzer.y:103:79: error: base operand of '->' is not a pointer
+  103 |                                         current_func_name = $2->get_name();
+      |
+      ^
+syntax_analyzer.y:105:64: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  105 |                                         delete $1; // Free symbol_info for type_specifier
+      |                                                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:106:64: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  106 |                                         delete $2; // Free symbol_info for ID
+      |                                                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:119:88: error: invalid conversion from 'const char*' to 'char
+' [-fpermissive]
+  119 |                     yyerror(("Redeclaration of parameter '" + param.second + "'").c_str());
+      |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+      |
+               |
+      |
+               const char*
+syntax_analyzer.y:30:20: note:   initializing argument 1 of 'void yyerror(char*
+'
+   30 | void yyerror(char *s)
+      |              ~~~~~~^
+syntax_analyzer.y:130:56: error: base operand of '->' is not a pointer
+  130 |             func_sym->set_num_params($4->get_num_params()); // $4 is parameter_list, which should carry num_params
+      |                                                        ^~
+syntax_analyzer.y:131:56: error: base operand of '->' is not a pointer
+  131 |             func_sym->set_param_list($4->get_param_list()); // $4 is parameter_list, which should carry param_list
+      |                                                        ^~
+syntax_analyzer.y:134:64: error: 'class symbol_table' has no member named 'get_current_scope'; did you mean 'get_current_scope_id'?
+  134 |             scope_table *current_func_param_scope = sym_table->get_current_scope();
+      |                                                                ^~~~~~~~~~~~~~~~~
+      |                                                                get_current_scope_id
+syntax_analyzer.y:139:104: error: invalid conversion from 'const char*' to 'char*' [-fpermissive]
+  139 |                 yyerror(("Redeclaration of function '" + current_func_name + "' in parent scope").c_str());
+      |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+      |
+                               |
+      |
+                               const char*
+syntax_analyzer.y:30:20: note:   initializing argument 1 of 'void yyerror(char*
+'
+   30 | void yyerror(char *s)
+      |              ~~~~~~^
+syntax_analyzer.y:150:56: error: base operand of '->' is not a pointer
+  150 |             for (const auto& param : $4->get_param_list()) {
+      |                                                        ^~
+syntax_analyzer.y:155:47: error: base operand of '->' is not a pointer
+  155 |             oss << ")\n" << $6->get_name(); // $6 is compound_statement
+      |                                               ^~
+syntax_analyzer.y:157:23: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  157 |             $$ = new symbol_info(oss.str(), "func_def");
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       |
+      |                       symbol_info*
+syntax_analyzer.y:159:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  159 |             delete $4; // Free symbol_info from parameter_list
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:160:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  160 |             delete $6; // Free symbol_info from compound_statement
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:164:86: error: base operand of '->' is not a pointer
+  164 |                                         current_func_return_type = $1->get_name();
+      |
+             ^
+syntax_analyzer.y:165:79: error: base operand of '->' is not a pointer
+  165 |                                         current_func_name = $2->get_name();
+      |
+      ^
+syntax_analyzer.y:167:64: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  167 |                                         delete $1; // Free symbol_info for type_specifier
+      |                                                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:168:64: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  168 |                                         delete $2; // Free symbol_info for ID
+      |                                                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:181:64: error: 'class symbol_table' has no member named 'get_current_scope'; did you mean 'get_current_scope_id'?
+  181 |             scope_table *current_func_param_scope = sym_table->get_current_scope();
+      |                                                                ^~~~~~~~~~~~~~~~~
+      |                                                                get_current_scope_id
+syntax_analyzer.y:184:104: error: invalid conversion from 'const char*' to 'char*' [-fpermissive]
+  184 |                 yyerror(("Redeclaration of function '" + current_func_name + "' in parent scope").c_str());
+      |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+      |
+                               |
+      |
+                               const char*
+syntax_analyzer.y:30:20: note:   initializing argument 1 of 'void yyerror(char*
+'
+   30 | void yyerror(char *s)
+      |              ~~~~~~^
+syntax_analyzer.y:191:104: error: base operand of '->' is not a pointer
+  191 |             oss << current_func_return_type << " " << current_func_name << "()\n" << $5->get_name(); // $5 is compound_statement
+      |
+                               ^~
+syntax_analyzer.y:193:23: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  193 |             $$ = new symbol_info(oss.str(), "func_def");
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       |
+      |                       symbol_info*
+syntax_analyzer.y:195:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  195 |             delete $5; // Free symbol_info from compound_statement
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:205:67: error: base operand of '->' is not a pointer
+  205 |             current_func_params_temp.push_back({$3->get_name(), $4->get_name()});
+      |                                                                   ^~
+syntax_analyzer.y:205:99: error: base operand of '->' is not a pointer
+  205 |             current_func_params_temp.push_back({$3->get_name(), $4->get_name()});
+      |
+                          ^
+syntax_analyzer.y:205:47: error: no matching function for call to 'std::vector<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >::push_back(<brace-enclosed initializer list>)'
+  205 |             current_func_params_temp.push_back({$3->get_name(), $4->get_name()});
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from C:/mingw64/include/c++/13.1.0/vector:66,
+                 from C:/mingw64/include/c++/13.1.0/functional:64,
+                 from C:/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/stdc++.h:53,
+                 from symbol_info.h:1,
+                 from scope_table.h:1,
+                 from symbol_table.h:1,
+                 from syntax_analyzer.y:3:
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >; value_type = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >]'
+ 1276 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:35: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const std::vector<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >::value_type&' {aka 'const std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >&'}
+ 1276 |       push_back(const value_type& __x)
+      |                 ~~~~~~~~~~~~~~~~~~^~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(value_type&&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >; value_type = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >]'
+ 1293 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:30: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'std::vector<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >::value_type&&' {aka 'std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >&&'}
+ 1293 |       push_back(value_type&& __x)
+      |                 ~~~~~~~~~~~~~^~~
+syntax_analyzer.y:209:38: error: base operand of '->' is not a pointer
+  209 |             oss << $1->get_name() << "," << $3->get_name() << " " << $4->get_name();
+      |                                      ^~
+syntax_analyzer.y:209:79: error: base operand of '->' is not a pointer
+  209 |             oss << $1->get_name() << "," << $3->get_name() << " " << $4->get_name();
+      |
+      ^~
+syntax_analyzer.y:209:120: error: base operand of '->' is not a pointer
+  209 |             oss << $1->get_name() << "," << $3->get_name() << " " << $4->get_name();
+      |
+                                               ^
+syntax_analyzer.y:210:23: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  210 |             $$ = new symbol_info(oss.str(), "param_list");
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       |
+      |                       symbol_info*
+syntax_analyzer.y:211:20: error: base operand of '->' is not a pointer
+  211 |             $$->set_num_params($1->get_num_params() + 1); // Increment count
+      |                    ^~
+syntax_analyzer.y:211:55: error: base operand of '->' is not a pointer
+  211 |             $$->set_num_params($1->get_num_params() + 1); // Increment count
+      |                                                       ^~
+syntax_analyzer.y:214:78: error: base operand of '->' is not a pointer
+  214 |             vector<pair<string, string>> combined_params = $1->get_param_list();
+      |
+     ^~
+syntax_analyzer.y:215:58: error: base operand of '->' is not a pointer
+  215 |             combined_params.push_back({$3->get_name(), $4->get_name()});
+      |                                                          ^~
+syntax_analyzer.y:215:90: error: base operand of '->' is not a pointer
+  215 |             combined_params.push_back({$3->get_name(), $4->get_name()});
+      |
+                 ^
+syntax_analyzer.y:215:38: error: no matching function for call to 'std::vector<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >::push_back(<brace-enclosed initializer list>)'
+  215 |             combined_params.push_back({$3->get_name(), $4->get_name()})
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >; value_type = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >]'
+ 1276 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:35: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const std::vector<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >::value_type&' {aka 'const std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >&'}
+ 1276 |       push_back(const value_type& __x)
+      |                 ~~~~~~~~~~~~~~~~~~^~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(value_type&&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >; value_type = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >]'
+ 1293 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:30: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'std::vector<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >::value_type&&' {aka 'std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >&&'}
+ 1293 |       push_back(value_type&& __x)
+      |                 ~~~~~~~~~~~~~^~~
+syntax_analyzer.y:216:20: error: base operand of '->' is not a pointer
+  216 |             $$->set_param_list(combined_params);
+      |                    ^~
+syntax_analyzer.y:218:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  218 |             delete $1; // Free symbol_info for previous parameter_list
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:219:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  219 |             delete $3; // Free symbol_info for type_specifier
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:220:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  220 |             delete $4; // Free symbol_info for ID
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:228:67: error: base operand of '->' is not a pointer
+  228 |             current_func_params_temp.push_back({$1->get_name(), $2->get_name()});
+      |                                                                   ^~
+syntax_analyzer.y:228:99: error: base operand of '->' is not a pointer
+  228 |             current_func_params_temp.push_back({$1->get_name(), $2->get_name()});
+      |
+                          ^
+syntax_analyzer.y:228:47: error: no matching function for call to 'std::vector<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >::push_back(<brace-enclosed initializer list>)'
+  228 |             current_func_params_temp.push_back({$1->get_name(), $2->get_name()});
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >; value_type = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >]'
+ 1276 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:35: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const std::vector<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >::value_type&' {aka 'const std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >&'}
+ 1276 |       push_back(const value_type& __x)
+      |                 ~~~~~~~~~~~~~~~~~~^~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(value_type&&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >; value_type = std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >]'
+ 1293 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:30: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'std::vector<std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > >::value_type&&' {aka 'std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >&&'}
+ 1293 |       push_back(value_type&& __x)
+      |                 ~~~~~~~~~~~~~^~~
+syntax_analyzer.y:232:38: error: base operand of '->' is not a pointer
+  232 |             oss << $1->get_name() << " " << $2->get_name();
+      |                                      ^~
+syntax_analyzer.y:232:79: error: base operand of '->' is not a pointer
+  232 |             oss << $1->get_name() << " " << $2->get_name();
+      |
+      ^
+syntax_analyzer.y:233:23: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  233 |             $$ = new symbol_info(oss.str(), "param_list");
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       |
+      |                       symbol_info*
+syntax_analyzer.y:234:20: error: base operand of '->' is not a pointer
+  234 |             $$->set_num_params(1);
+      |                    ^~
+syntax_analyzer.y:235:20: error: base operand of '->' is not a pointer
+  235 |             $$->get_param_list().push_back({$1->get_name(), $2->get_name()});
+      |                    ^~
+syntax_analyzer.y:235:68: error: base operand of '->' is not a pointer
+  235 |             $$->get_param_list().push_back({$1->get_name(), $2->get_name()});
+      |                                                                    ^~
+syntax_analyzer.y:235:100: error: base operand of '->' is not a pointer
+  235 |             $$->get_param_list().push_back({$1->get_name(), $2->get_name()});
+      |
+                           ^
+syntax_analyzer.y:237:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  237 |             delete $1; // Free symbol_info for type_specifier
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:238:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  238 |             delete $2; // Free symbol_info for ID
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:249:38: error: base operand of '->' is not a pointer
+  249 |             oss << $1->get_name() << "," << $3->get_name();
+      |                                      ^~
+syntax_analyzer.y:249:79: error: base operand of '->' is not a pointer
+  249 |             oss << $1->get_name() << "," << $3->get_name();
+      |
+      ^
+syntax_analyzer.y:250:23: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  250 |             $$ = new symbol_info(oss.str(), "param_list");
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       |
+      |                       symbol_info*
+syntax_analyzer.y:251:20: error: base operand of '->' is not a pointer
+  251 |             $$->set_num_params($1->get_num_params());
+      |                    ^~
+syntax_analyzer.y:251:55: error: base operand of '->' is not a pointer
+  251 |             $$->set_num_params($1->get_num_params());
+      |                                                       ^
+syntax_analyzer.y:252:20: error: base operand of '->' is not a pointer
+  252 |             $$->set_param_list($1->get_param_list());
+      |                    ^~
+syntax_analyzer.y:252:55: error: base operand of '->' is not a pointer
+  252 |             $$->set_param_list($1->get_param_list());
+      |                                                       ^
+syntax_analyzer.y:254:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  254 |             delete $1; // Free symbol_info
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:255:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  255 |             delete $3; // Free symbol_info
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:264:57: error: base operand of '->' is not a pointer
+  264 |             $$ = new symbol_info($1->get_name(), "param_list");
+      |                                                         ^~
+syntax_analyzer.y:265:20: error: base operand of '->' is not a pointer
+  265 |             $$->set_num_params(0);
+      |                    ^~
+syntax_analyzer.y:267:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  267 |             delete $1; // Free symbol_info
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:276:67: error: base operand of '->' is not a pointer
+  276 |                                 oss << "{\n" << $3->get_name() << "\n}";
+      |                                                                   ^~
+syntax_analyzer.y:277:43: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  277 |                                 $$ = new symbol_info(oss.str(),"comp_stmnt");
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                           |
+      |                                           symbol_info*
+syntax_analyzer.y:280:40: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  280 |                 delete $3; // Free symbol_info from statements
+      |                        ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:287:43: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  287 |                                 $$ = new symbol_info("{\n}","comp_stmnt");
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                           |
+      |                                           symbol_info*
+syntax_analyzer.y:306:103: error: invalid conversion from 'const char*' to 'char*' [-fpermissive]
+  306 |                     yyerror(("Redeclaration of variable '" + item.first + "' in the same scope").c_str());
+      |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+      |
+                              |
+      |
+                              const char*
+syntax_analyzer.y:30:20: note:   initializing argument 1 of 'void yyerror(char*
+'
+   30 | void yyerror(char *s)
+      |              ~~~~~~^
+syntax_analyzer.y:313:38: error: base operand of '->' is not a pointer
+  313 |             oss << $1->get_name() << " " << $2->get_name() << ";";
+      |                                      ^~
+syntax_analyzer.y:313:79: error: base operand of '->' is not a pointer
+  313 |             oss << $1->get_name() << " " << $2->get_name() << ";";
+      |
+      ^
+syntax_analyzer.y:314:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  314 |                         $$ = new symbol_info(oss.str(),"var_dec");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:316:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  316 |             delete $1; // Free symbol_info for type_specifier
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:317:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  317 |             delete $2; // Free symbol_info for declaration_list
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:328:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  328 |                         $$ = new symbol_info("int","type");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:337:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  337 |                         $$ = new symbol_info("float","type");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:346:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  346 |                         $$ = new symbol_info("void","type");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:356:73: error: base operand of '->' is not a pointer
+  356 |             current_declaration_list_items.push_back({$3->get_name(), -
+});
+      |
+^~
+syntax_analyzer.y:356:53: error: no matching function for call to 'std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::push_back(<brace-enclosed initializer list>)'
+  356 |             current_declaration_list_items.push_back({$3->get_name(), -1});
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, int>; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, int> >; value_type = std::pair<std::__cxx11::basic_string<char>, int>]'
+ 1276 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:35: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::value_type&' {aka 'const std::pair<std::__cxx11::basic_string<char>, int>&'}
+ 1276 |       push_back(const value_type& __x)
+      |                 ~~~~~~~~~~~~~~~~~~^~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(value_type&&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, int>; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, int> >; value_type = std::pair<std::__cxx11::basic_string<char>, int>]'
+ 1293 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:30: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::value_type&&' {aka 'std::pair<std::__cxx11::basic_string<char>, int>&&'}
+ 1293 |       push_back(value_type&& __x)
+      |                 ~~~~~~~~~~~~~^~~
+syntax_analyzer.y:359:38: error: base operand of '->' is not a pointer
+  359 |             oss << $1->get_name() << "," << $3->get_name();
+      |                                      ^~
+syntax_analyzer.y:359:79: error: base operand of '->' is not a pointer
+  359 |             oss << $1->get_name() << "," << $3->get_name();
+      |
+      ^
+syntax_analyzer.y:360:48: error: no matching function for call to 'symbol_info::symbol_info(std::__cxx11::basic_ostringstream<char>::__string_type)'
+  360 |             $$ = new symbol_info(oss.str()); // Use default constructor then set name
+      |                                                ^
+symbol_info.h:43:5: note: candidate: 'symbol_info::symbol_info(const symbol_info&)'
+   43 |     symbol_info(const symbol_info& other)
+      |     ^~~~~~~~~~~
+symbol_info.h:43:36: note:   no known conversion for argument 1 from 'std::__cxx11::basic_ostringstream<char>::__string_type' {aka 'std::__cxx11::basic_string<char>'} to 'const symbol_info&'
+   43 |     symbol_info(const symbol_info& other)
+      |                 ~~~~~~~~~~~~~~~~~~~^~~~~
+symbol_info.h:31:5: note: candidate: 'symbol_info::symbol_info(std::string, std::string, std::string, std::string)'
+   31 |     symbol_info(string name, string type, string symbol_type, string data_type)
+      |     ^~~~~~~~~~~
+symbol_info.h:31:5: note:   candidate expects 4 arguments, 1 provided
+symbol_info.h:20:5: note: candidate: 'symbol_info::symbol_info(std::string, std::string)'
+   20 |     symbol_info(string name, string type)
+      |     ^~~~~~~~~~~
+symbol_info.h:20:5: note:   candidate expects 2 arguments, 1 provided
+syntax_analyzer.y:361:20: error: base operand of '->' is not a pointer
+  361 |             $$->set_name(oss.str());
+      |                    ^~
+syntax_analyzer.y:363:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  363 |             delete $1; // Free symbol_info for previous declaration_list
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:364:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  364 |             delete $3; // Free symbol_info for ID
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:372:53: error: base operand of '->' is not a pointer
+  372 |             int array_size = stoi($5->get_name()); // Assuming CONST_INT stores string representation
+      |                                                     ^~
+syntax_analyzer.y:373:73: error: base operand of '->' is not a pointer
+  373 |             current_declaration_list_items.push_back({$3->get_name(), a
+ray_size});
+      |
+^~
+syntax_analyzer.y:373:53: error: no matching function for call to 'std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::push_back(<brace-enclosed initializer list>)'
+  373 |             current_declaration_list_items.push_back({$3->get_name(), array_size});
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, int>; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, int> >; value_type = std::pair<std::__cxx11::basic_string<char>, int>]'
+ 1276 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:35: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::value_type&' {aka 'const std::pair<std::__cxx11::basic_string<char>, int>&'}
+ 1276 |       push_back(const value_type& __x)
+      |                 ~~~~~~~~~~~~~~~~~~^~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(value_type&&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, int>; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, int> >; value_type = std::pair<std::__cxx11::basic_string<char>, int>]'
+ 1293 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:30: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::value_type&&' {aka 'std::pair<std::__cxx11::basic_string<char>, int>&&'}
+ 1293 |       push_back(value_type&& __x)
+      |                 ~~~~~~~~~~~~~^~~
+syntax_analyzer.y:376:38: error: base operand of '->' is not a pointer
+  376 |             oss << $1->get_name() << "," << $3->get_name() << "[" << $5->get_name() << "]";
+      |                                      ^~
+syntax_analyzer.y:376:79: error: base operand of '->' is not a pointer
+  376 |             oss << $1->get_name() << "," << $3->get_name() << "[" << $5->get_name() << "]";
+      |
+      ^~
+syntax_analyzer.y:376:120: error: base operand of '->' is not a pointer
+  376 |             oss << $1->get_name() << "," << $3->get_name() << "[" << $5->get_name() << "]";
+      |
+                                               ^
+syntax_analyzer.y:377:48: error: no matching function for call to 'symbol_info::symbol_info(std::__cxx11::basic_ostringstream<char>::__string_type)'
+  377 |             $$ = new symbol_info(oss.str());
+      |                                                ^
+symbol_info.h:43:5: note: candidate: 'symbol_info::symbol_info(const symbol_info&)'
+   43 |     symbol_info(const symbol_info& other)
+      |     ^~~~~~~~~~~
+symbol_info.h:43:36: note:   no known conversion for argument 1 from 'std::__cxx11::basic_ostringstream<char>::__string_type' {aka 'std::__cxx11::basic_string<char>'} to 'const symbol_info&'
+   43 |     symbol_info(const symbol_info& other)
+      |                 ~~~~~~~~~~~~~~~~~~~^~~~~
+symbol_info.h:31:5: note: candidate: 'symbol_info::symbol_info(std::string, std::string, std::string, std::string)'
+   31 |     symbol_info(string name, string type, string symbol_type, string data_type)
+      |     ^~~~~~~~~~~
+symbol_info.h:31:5: note:   candidate expects 4 arguments, 1 provided
+symbol_info.h:20:5: note: candidate: 'symbol_info::symbol_info(std::string, std::string)'
+   20 |     symbol_info(string name, string type)
+      |     ^~~~~~~~~~~
+symbol_info.h:20:5: note:   candidate expects 2 arguments, 1 provided
+syntax_analyzer.y:378:20: error: base operand of '->' is not a pointer
+  378 |             $$->set_name(oss.str());
+      |                    ^~
+syntax_analyzer.y:380:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  380 |             delete $1; // Free symbol_info for previous declaration_list
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:381:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  381 |             delete $3; // Free symbol_info for ID
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:382:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  382 |             delete $5; // Free symbol_info for CONST_INT
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:390:73: error: base operand of '->' is not a pointer
+  390 |             current_declaration_list_items.push_back({$1->get_name(), -
+});
+      |
+^~
+syntax_analyzer.y:390:53: error: no matching function for call to 'std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::push_back(<brace-enclosed initializer list>)'
+  390 |             current_declaration_list_items.push_back({$1->get_name(), -1});
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, int>; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, int> >; value_type = std::pair<std::__cxx11::basic_string<char>, int>]'
+ 1276 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:35: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::value_type&' {aka 'const std::pair<std::__cxx11::basic_string<char>, int>&'}
+ 1276 |       push_back(const value_type& __x)
+      |                 ~~~~~~~~~~~~~~~~~~^~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(value_type&&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, int>; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, int> >; value_type = std::pair<std::__cxx11::basic_string<char>, int>]'
+ 1293 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:30: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::value_type&&' {aka 'std::pair<std::__cxx11::basic_string<char>, int>&&'}
+ 1293 |       push_back(value_type&& __x)
+      |                 ~~~~~~~~~~~~~^~~
+syntax_analyzer.y:391:57: error: base operand of '->' is not a pointer
+  391 |             $$ = new symbol_info($1->get_name()); // Use default constructor then set name
+      |                                                         ^~
+syntax_analyzer.y:392:20: error: base operand of '->' is not a pointer
+  392 |             $$->set_name($1->get_name());
+      |                    ^~
+syntax_analyzer.y:392:49: error: base operand of '->' is not a pointer
+  392 |             $$->set_name($1->get_name());
+      |                                                 ^
+syntax_analyzer.y:394:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  394 |             delete $1; // Free symbol_info for ID
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:402:53: error: base operand of '->' is not a pointer
+  402 |             int array_size = stoi($3->get_name());
+      |                                                     ^
+syntax_analyzer.y:403:73: error: base operand of '->' is not a pointer
+  403 |             current_declaration_list_items.push_back({$1->get_name(), a
+ray_size});
+      |
+^~
+syntax_analyzer.y:403:53: error: no matching function for call to 'std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::push_back(<brace-enclosed initializer list>)'
+  403 |             current_declaration_list_items.push_back({$1->get_name(), array_size});
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, int>; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, int> >; value_type = std::pair<std::__cxx11::basic_string<char>, int>]'
+ 1276 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1276:35: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::value_type&' {aka 'const std::pair<std::__cxx11::basic_string<char>, int>&'}
+ 1276 |       push_back(const value_type& __x)
+      |                 ~~~~~~~~~~~~~~~~~~^~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(value_type&&) [with _Tp = std::pair<std::__cxx11::basic_string<char>, int>; _Alloc = std::allocator<std::pair<std::__cxx11::basic_string<char>, int> >; value_type = std::pair<std::__cxx11::basic_string<char>, int>]'
+ 1293 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+C:/mingw64/include/c++/13.1.0/bits/stl_vector.h:1293:30: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'std::vector<std::pair<std::__cxx11::basic_string<char>, int> >::value_type&&' {aka 'std::pair<std::__cxx11::basic_string<char>, int>&&'}
+ 1293 |       push_back(value_type&& __x)
+      |                 ~~~~~~~~~~~~~^~~
+syntax_analyzer.y:406:38: error: base operand of '->' is not a pointer
+  406 |             oss << $1->get_name() << "[" << $3->get_name() << "]";
+      |                                      ^~
+syntax_analyzer.y:406:79: error: base operand of '->' is not a pointer
+  406 |             oss << $1->get_name() << "[" << $3->get_name() << "]";
+      |
+      ^
+syntax_analyzer.y:407:48: error: no matching function for call to 'symbol_info::symbol_info(std::__cxx11::basic_ostringstream<char>::__string_type)'
+  407 |             $$ = new symbol_info(oss.str());
+      |                                                ^
+symbol_info.h:43:5: note: candidate: 'symbol_info::symbol_info(const symbol_info&)'
+   43 |     symbol_info(const symbol_info& other)
+      |     ^~~~~~~~~~~
+symbol_info.h:43:36: note:   no known conversion for argument 1 from 'std::__cxx11::basic_ostringstream<char>::__string_type' {aka 'std::__cxx11::basic_string<char>'} to 'const symbol_info&'
+   43 |     symbol_info(const symbol_info& other)
+      |                 ~~~~~~~~~~~~~~~~~~~^~~~~
+symbol_info.h:31:5: note: candidate: 'symbol_info::symbol_info(std::string, std::string, std::string, std::string)'
+   31 |     symbol_info(string name, string type, string symbol_type, string data_type)
+      |     ^~~~~~~~~~~
+symbol_info.h:31:5: note:   candidate expects 4 arguments, 1 provided
+symbol_info.h:20:5: note: candidate: 'symbol_info::symbol_info(std::string, std::string)'
+   20 |     symbol_info(string name, string type)
+      |     ^~~~~~~~~~~
+symbol_info.h:20:5: note:   candidate expects 2 arguments, 1 provided
+syntax_analyzer.y:408:20: error: base operand of '->' is not a pointer
+  408 |             $$->set_name(oss.str());
+      |                    ^~
+syntax_analyzer.y:410:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  410 |             delete $1; // Free symbol_info for ID
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:411:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  411 |             delete $3; // Free symbol_info for CONST_INT
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:419:51: error: base operand of '->' is not a pointer
+  419 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:421:69: error: base operand of '->' is not a pointer
+  421 |                         $$ = new symbol_info($1->get_name(),"stmnts");
+      |                                                                     ^~
+syntax_analyzer.y:422:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  422 |             delete $1; // Free symbol_info from statement
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:430:38: error: base operand of '->' is not a pointer
+  430 |             oss << $1->get_name() << "\n" << $2->get_name();
+      |                                      ^~
+syntax_analyzer.y:430:80: error: base operand of '->' is not a pointer
+  430 |             oss << $1->get_name() << "\n" << $2->get_name();
+      |
+       ^
+syntax_analyzer.y:431:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  431 |                         $$ = new symbol_info(oss.str(),"stmnts");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:433:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  433 |             delete $1; // Free symbol_info from statements
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:434:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  434 |             delete $2; // Free symbol_info from statement
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:441:51: error: base operand of '->' is not a pointer
+  441 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:443:69: error: base operand of '->' is not a pointer
+  443 |                         $$ = new symbol_info($1->get_name(),"stmnt");
+      |                                                                     ^
+syntax_analyzer.y:444:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  444 |             delete $1; // Free symbol_info from var_declaration
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:449:39: error: base operand of '->' is not a pointer
+  449 |             outlog<<$1->get_name()<<endl<<endl;
+      |                                       ^~
+syntax_analyzer.y:451:57: error: base operand of '->' is not a pointer
+  451 |             $$ = new symbol_info($1->get_name(),"stmnt");
+      |                                                         ^
+syntax_analyzer.y:452:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  452 |             delete $1; // Free symbol_info from func_definition
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:458:51: error: base operand of '->' is not a pointer
+  458 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:460:69: error: base operand of '->' is not a pointer
+  460 |                         $$ = new symbol_info($1->get_name(),"stmnt");
+      |                                                                     ^
+syntax_analyzer.y:461:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  461 |             delete $1; // Free symbol_info from expression_statement
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:466:51: error: base operand of '->' is not a pointer
+  466 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:468:69: error: base operand of '->' is not a pointer
+  468 |                         $$ = new symbol_info($1->get_name(),"stmnt");
+      |                                                                     ^
+syntax_analyzer.y:469:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  469 |             delete $1; // Free symbol_info from compound_statement
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:477:48: error: base operand of '->' is not a pointer
+  477 |             oss << "for(" << $3->get_name() << $4->get_name() << $5->get_name() << ")\n" << $7->get_name();
+      |                                                ^~
+syntax_analyzer.y:477:82: error: base operand of '->' is not a pointer
+  477 |             oss << "for(" << $3->get_name() << $4->get_name() << $5->get_name() << ")\n" << $7->get_name();
+      |
+         ^~
+syntax_analyzer.y:477:116: error: base operand of '->' is not a pointer
+  477 |             oss << "for(" << $3->get_name() << $4->get_name() << $5->get_name() << ")\n" << $7->get_name();
+      |
+                                           ^
+syntax_analyzer.y:477:159: error: base operand of '->' is not a pointer
+  477 |             oss << "for(" << $3->get_name() << $4->get_name() << $5->get_name() << ")\n" << $7->get_name();
+      |
+
+      ^
+syntax_analyzer.y:478:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  478 |                         $$ = new symbol_info(oss.str(),"stmnt");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:480:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  480 |             delete $3; delete $4; delete $5; delete $7; // Free symbol_info objects
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:480:63: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  480 |             delete $3; delete $4; delete $5; delete $7; // Free symbol_info objects
+      |                                               ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:480:90: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  480 |             delete $3; delete $4; delete $5; delete $7; // Free symbol_info objects
+      |
+ ~~~~~~~~~~      ^
+syntax_analyzer.y:480:117: error: type 'YYSTYPE' {aka 'int'} argument given to
+delete', expected pointer
+  480 |             delete $3; delete $4; delete $5; delete $7; // Free symbol_info objects
+      |
+                                            ^
+syntax_analyzer.y:488:47: error: base operand of '->' is not a pointer
+  488 |             oss << "if(" << $3->get_name() << ")\n" << $5->get_name();
+      |                                               ^~
+syntax_analyzer.y:488:90: error: base operand of '->' is not a pointer
+  488 |             oss << "if(" << $3->get_name() << ")\n" << $5->get_name();
+      |
+                 ^
+syntax_analyzer.y:489:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  489 |                         $$ = new symbol_info(oss.str(),"stmnt");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:491:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  491 |             delete $3; delete $5; // Free symbol_info objects
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:491:63: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  491 |             delete $3; delete $5; // Free symbol_info objects
+      |                                               ~~~~~~~~~~~~~~~ ^
+syntax_analyzer.y:499:47: error: base operand of '->' is not a pointer
+  499 |             oss << "if(" << $3->get_name() << ")\n" << $5->get_name() << "\nelse\n" << $7->get_name();
+      |                                               ^~
+syntax_analyzer.y:499:90: error: base operand of '->' is not a pointer
+  499 |             oss << "if(" << $3->get_name() << ")\n" << $5->get_name() << "\nelse\n" << $7->get_name();
+      |
+                 ^~
+syntax_analyzer.y:499:138: error: base operand of '->' is not a pointer
+  499 |             oss << "if(" << $3->get_name() << ")\n" << $5->get_name() << "\nelse\n" << $7->get_name();
+      |
+                                                                 ^
+syntax_analyzer.y:500:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  500 |                         $$ = new symbol_info(oss.str(),"stmnt");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:502:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  502 |             delete $3; delete $5; delete $7; // Free symbol_info objects
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:502:63: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  502 |             delete $3; delete $5; delete $7; // Free symbol_info objects
+      |                                               ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:502:90: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  502 |             delete $3; delete $5; delete $7; // Free symbol_info objects
+      |
+                 ^
+syntax_analyzer.y:510:50: error: base operand of '->' is not a pointer
+  510 |             oss << "while(" << $3->get_name() << ")\n" << $5->get_name();
+      |                                                  ^~
+syntax_analyzer.y:510:93: error: base operand of '->' is not a pointer
+  510 |             oss << "while(" << $3->get_name() << ")\n" << $5->get_name();
+      |
+                    ^
+syntax_analyzer.y:511:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  511 |                         $$ = new symbol_info(oss.str(),"stmnt");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:513:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  513 |             delete $3; delete $5; // Free symbol_info objects
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:513:63: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  513 |             delete $3; delete $5; // Free symbol_info objects
+      |                                               ~~~~~~~~~~~~~~~ ^
+syntax_analyzer.y:518:62: error: base operand of '->' is not a pointer
+  518 |                         outlog<<"printf("<<$3->get_name()<<");"<<endl<<endl;
+      |                                                              ^~
+syntax_analyzer.y:520:79: error: base operand of '->' is not a pointer
+  520 |                         $$ = new symbol_info("printf("+$3->get_name()+");","stmnt");
+      |
+      ^~
+syntax_analyzer.y:521:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  521 |             delete $3; // Free symbol_info for ID
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:526:62: error: base operand of '->' is not a pointer
+  526 |                         outlog<<"return "<<$2->get_name()<<";"<<endl<<endl;
+      |                                                              ^~
+syntax_analyzer.y:528:79: error: base operand of '->' is not a pointer
+  528 |                         $$ = new symbol_info("return "+$2->get_name()+";","stmnt");
+      |
+      ^~
+syntax_analyzer.y:529:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  529 |             delete $2; // Free symbol_info for expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:538:43: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  538 |                                 $$ = new symbol_info(";","expr_stmt");
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      |                                           |
+      |                                           symbol_info*
+syntax_analyzer.y:543:59: error: base operand of '->' is not a pointer
+  543 |                                 outlog<<$1->get_name()<<";"<<endl<<endl;
+      |                                                           ^~
+syntax_analyzer.y:545:77: error: base operand of '->' is not a pointer
+  545 |                                 $$ = new symbol_info($1->get_name()+";","expr_stmt");
+      |
+    ^~
+syntax_analyzer.y:546:40: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  546 |                 delete $1; // Free symbol_info for expression
+      |                        ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:553:43: error: base operand of '->' is not a pointer
+  553 |                 outlog<<$1->get_name()<<endl<<endl;
+      |                                           ^~
+syntax_analyzer.y:555:61: error: base operand of '->' is not a pointer
+  555 |                 $$ = new symbol_info($1->get_name(),"varbl");
+      |                                                             ^
+syntax_analyzer.y:556:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  556 |         delete $1; // Free symbol_info for ID
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:563:34: error: base operand of '->' is not a pointer
+  563 |         oss << $1->get_name() << "[" << $3->get_name() << "]";
+      |                                  ^~
+syntax_analyzer.y:563:75: error: base operand of '->' is not a pointer
+  563 |         oss << $1->get_name() << "[" << $3->get_name() << "]";
+      |
+  ^
+syntax_analyzer.y:564:27: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  564 |                 $$ = new symbol_info(oss.str(),"varbl");
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           symbol_info*
+syntax_analyzer.y:566:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  566 |         delete $1; // Free symbol_info for ID
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:567:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  567 |         delete $3; // Free symbol_info for expression
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:574:51: error: base operand of '->' is not a pointer
+  574 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:576:69: error: base operand of '->' is not a pointer
+  576 |                         $$ = new symbol_info($1->get_name(),"expr");
+      |                                                                     ^
+syntax_analyzer.y:577:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  577 |             delete $1; // Free symbol_info for logic_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:584:38: error: base operand of '->' is not a pointer
+  584 |             oss << $1->get_name() << "=" << $3->get_name();
+      |                                      ^~
+syntax_analyzer.y:584:79: error: base operand of '->' is not a pointer
+  584 |             oss << $1->get_name() << "=" << $3->get_name();
+      |
+      ^
+syntax_analyzer.y:585:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  585 |                         $$ = new symbol_info(oss.str(),"expr");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:587:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  587 |             delete $1; // Free symbol_info for variable
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:589:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  589 |             delete $3; // Free symbol_info for logic_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:596:51: error: base operand of '->' is not a pointer
+  596 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:598:69: error: base operand of '->' is not a pointer
+  598 |                         $$ = new symbol_info($1->get_name(),"lgc_expr");
+      |                                                                     ^~
+syntax_analyzer.y:599:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  599 |             delete $1; // Free symbol_info for rel_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:606:38: error: base operand of '->' is not a pointer
+  606 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |                                      ^~
+syntax_analyzer.y:606:72: error: base operand of '->' is not a pointer
+  606 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |
+
+syntax_analyzer.y:606:106: error: base operand of '->' is not a pointer
+  606 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |
+                                 ^
+syntax_analyzer.y:607:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  607 |                         $$ = new symbol_info(oss.str(),"lgc_expr");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:609:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  609 |             delete $1; // Free symbol_info for rel_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:611:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  611 |             delete $3; // Free symbol_info for rel_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:618:51: error: base operand of '->' is not a pointer
+  618 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:620:69: error: base operand of '->' is not a pointer
+  620 |                         $$ = new symbol_info($1->get_name(),"rel_expr");
+      |                                                                     ^~
+syntax_analyzer.y:621:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  621 |             delete $1; // Free symbol_info for simple_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:628:38: error: base operand of '->' is not a pointer
+  628 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |                                      ^~
+syntax_analyzer.y:628:72: error: base operand of '->' is not a pointer
+  628 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |
+
+syntax_analyzer.y:628:106: error: base operand of '->' is not a pointer
+  628 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |
+                                 ^
+syntax_analyzer.y:629:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  629 |                         $$ = new symbol_info(oss.str(),"rel_expr");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:631:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  631 |             delete $1; // Free symbol_info for simple_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:633:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  633 |             delete $3; // Free symbol_info for simple_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:640:51: error: base operand of '->' is not a pointer
+  640 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:642:69: error: base operand of '->' is not a pointer
+  642 |                         $$ = new symbol_info($1->get_name(),"simp_expr");
+      |                                                                     ^~
+syntax_analyzer.y:643:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  643 |             delete $1; // Free symbol_info for term
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:650:38: error: base operand of '->' is not a pointer
+  650 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |                                      ^~
+syntax_analyzer.y:650:72: error: base operand of '->' is not a pointer
+  650 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |
+
+syntax_analyzer.y:650:106: error: base operand of '->' is not a pointer
+  650 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |
+                                 ^
+syntax_analyzer.y:651:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  651 |                         $$ = new symbol_info(oss.str(),"simp_expr");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:653:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  653 |             delete $1; // Free symbol_info for simple_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:655:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  655 |             delete $3; // Free symbol_info for term
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:662:51: error: base operand of '->' is not a pointer
+  662 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:664:69: error: base operand of '->' is not a pointer
+  664 |                         $$ = new symbol_info($1->get_name(),"term");
+      |                                                                     ^
+syntax_analyzer.y:665:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  665 |             delete $1; // Free symbol_info for unary_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:672:38: error: base operand of '->' is not a pointer
+  672 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |                                      ^~
+syntax_analyzer.y:672:72: error: base operand of '->' is not a pointer
+  672 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |
+
+syntax_analyzer.y:672:106: error: base operand of '->' is not a pointer
+  672 |             oss << $1->get_name() << $2->get_name() << $3->get_name();
+      |
+                                 ^
+syntax_analyzer.y:673:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  673 |                         $$ = new symbol_info(oss.str(),"term");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:675:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  675 |             delete $1; // Free symbol_info for term
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:677:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  677 |             delete $3; // Free symbol_info for unary_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:686:38: error: base operand of '->' is not a pointer
+  686 |             oss << $1->get_name() << $2->get_name();
+      |                                      ^~
+syntax_analyzer.y:686:72: error: base operand of '->' is not a pointer
+  686 |             oss << $1->get_name() << $2->get_name();
+      |
+
+syntax_analyzer.y:687:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  687 |                         $$ = new symbol_info(oss.str(),"un_expr");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:690:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  690 |             delete $2; // Free symbol_info for unary_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:697:45: error: base operand of '->' is not a pointer
+  697 |             oss << "!" << $2->get_name();
+      |                                             ^
+syntax_analyzer.y:698:35: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  698 |                         $$ = new symbol_info(oss.str(),"un_expr");
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   symbol_info*
+syntax_analyzer.y:701:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  701 |             delete $2; // Free symbol_info for unary_expression
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:706:51: error: base operand of '->' is not a pointer
+  706 |                         outlog<<$1->get_name()<<endl<<endl;
+      |                                                   ^~
+syntax_analyzer.y:708:69: error: base operand of '->' is not a pointer
+  708 |                         $$ = new symbol_info($1->get_name(),"un_expr");
+      |                                                                     ^~
+syntax_analyzer.y:709:36: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  709 |             delete $1; // Free symbol_info for factor
+      |                    ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:716:43: error: base operand of '->' is not a pointer
+  716 |                 outlog<<$1->get_name()<<endl<<endl;
+      |                                           ^~
+syntax_analyzer.y:718:61: error: base operand of '->' is not a pointer
+  718 |                 $$ = new symbol_info($1->get_name(),"fctr");
+      |                                                             ^
+syntax_analyzer.y:719:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  719 |         delete $1; // Free symbol_info for variable
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:726:34: error: base operand of '->' is not a pointer
+  726 |         oss << $1->get_name() << "(" << $3->get_name() << ")";
+      |                                  ^~
+syntax_analyzer.y:726:75: error: base operand of '->' is not a pointer
+  726 |         oss << $1->get_name() << "(" << $3->get_name() << ")";
+      |
+  ^
+syntax_analyzer.y:727:27: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  727 |                 $$ = new symbol_info(oss.str(),"fctr");
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           symbol_info*
+syntax_analyzer.y:729:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  729 |         delete $1; // Free symbol_info for ID
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:730:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  730 |         delete $3; // Free symbol_info for argument_list
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:737:41: error: base operand of '->' is not a pointer
+  737 |         oss << "(" << $2->get_name() << ")";
+      |                                         ^~
+syntax_analyzer.y:738:27: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  738 |                 $$ = new symbol_info(oss.str(),"fctr");
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           symbol_info*
+syntax_analyzer.y:740:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  740 |         delete $2; // Free symbol_info for expression
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:745:43: error: base operand of '->' is not a pointer
+  745 |                 outlog<<$1->get_name()<<endl<<endl;
+      |                                           ^~
+syntax_analyzer.y:747:61: error: base operand of '->' is not a pointer
+  747 |                 $$ = new symbol_info($1->get_name(),"fctr");
+      |                                                             ^
+syntax_analyzer.y:748:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  748 |         delete $1; // Free symbol_info for CONST_INT
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:753:43: error: base operand of '->' is not a pointer
+  753 |                 outlog<<$1->get_name()<<endl<<endl;
+      |                                           ^~
+syntax_analyzer.y:755:61: error: base operand of '->' is not a pointer
+  755 |                 $$ = new symbol_info($1->get_name(),"fctr");
+      |                                                             ^
+syntax_analyzer.y:756:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  756 |         delete $1; // Free symbol_info for CONST_FLOAT
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:763:34: error: base operand of '->' is not a pointer
+  763 |         oss << $1->get_name() << "++";
+      |                                  ^~
+syntax_analyzer.y:764:27: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  764 |                 $$ = new symbol_info(oss.str(),"fctr");
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           symbol_info*
+syntax_analyzer.y:766:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  766 |         delete $1; // Free symbol_info for variable
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:774:34: error: base operand of '->' is not a pointer
+  774 |         oss << $1->get_name() << "--";
+      |                                  ^~
+syntax_analyzer.y:775:27: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  775 |                 $$ = new symbol_info(oss.str(),"fctr");
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           symbol_info*
+syntax_analyzer.y:777:32: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  777 |         delete $1; // Free symbol_info for variable
+      |                ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:787:85: error: base operand of '->' is not a pointer
+  787 |                                         $$ = new symbol_info($1->get_name(),"arg_list");
+      |
+            ^~
+syntax_analyzer.y:788:44: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  788 |                     delete $1; // Free symbol_info for arguments
+      |                            ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:795:51: error: invalid conversion from 'symbol_info*' to 'YYSTYPE' {aka 'int'} [-fpermissive]
+  795 |                                         $$ = new symbol_info("","arg_list");
+      |                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                   |
+      |                                                   symbol_info*
+syntax_analyzer.y:802:59: error: base operand of '->' is not a pointer
+  802 |                                 outlog<<$1->get_name()<<","<<$3->get_name()<<endl<<endl;
+      |                                                           ^~
+syntax_analyzer.y:802:96: error: base operand of '->' is not a pointer
+  802 |                                 outlog<<$1->get_name()<<","<<$3->get_name()<<endl<<endl;
+      |
+                       ^
+syntax_analyzer.y:804:77: error: base operand of '->' is not a pointer
+  804 |                                 $$ = new symbol_info($1->get_name()+","+$3->get_name(),"arg");
+      |
+    ^~
+syntax_analyzer.y:804:112: error: base operand of '->' is not a pointer
+  804 |                                 $$ = new symbol_info($1->get_name()+","+$3->get_name(),"arg");
+      |
+                                       ^
+syntax_analyzer.y:806:40: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  806 |                 delete $1; // Free symbol_info for arguments
+      |                        ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:807:40: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  807 |                 delete $3; // Free symbol_info for logic_expression
+      |                        ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y:812:59: error: base operand of '->' is not a pointer
+  812 |                                 outlog<<$1->get_name()<<endl<<endl;
+      |                                                           ^~
+syntax_analyzer.y:814:77: error: base operand of '->' is not a pointer
+  814 |                                 $$ = new symbol_info($1->get_name(),"arg");
+      |
+    ^
+syntax_analyzer.y:815:40: error: type 'YYSTYPE' {aka 'int'} argument given to 'delete', expected pointer
+  815 |                 delete $1; // Free symbol_info for logic_expression
+      |                        ~~~~~~~~~~~~~~~~^~
+syntax_analyzer.y: In function 'int main(int, char**)':
+syntax_analyzer.y:829:9: error: 'yyin' was not declared in this scope
+  829 |         yyin = fopen(argv[1], "r");
+      |         ^~~~
+Generated the parser object file
+Generated the scanner C file
+Generated the scanner object file
+C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find y.o: No such file or directory
+collect2.exe: error: ld returned 1 exit status
+All ready, running
+./script.sh: line 14: ./a.exe: No such file or directory
+logfile
