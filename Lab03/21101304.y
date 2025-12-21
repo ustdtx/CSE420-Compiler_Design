@@ -85,12 +85,12 @@ unit : var_declaration
 	 }
      ;
 
-func_definition : type_specifier func_name LPAREN parameter_list RPAREN func_insert scope_enter compound_statement
+func_definition : type_specifier func_name LPAREN parameter_list RPAREN func_insert scope_enter param_insert compound_statement
 		{	
 			outlog<<"At line no: "<<lines<<" func_definition : type_specifier ID LPAREN parameter_list RPAREN compound_statement "<<endl<<endl;
-			outlog<<$1->get_name()<<" "<<$2->get_name()<<"("+$4->get_name()+")\n"<<$8->get_name()<<endl<<endl;
+			outlog<<$1->get_name()<<" "<<$2->get_name()<<"("+$4->get_name()+")\n"<<$9->get_name()<<endl<<endl;
 			
-			$$ = new symbol_info($1->get_name()+" "+$2->get_name()+"("+$4->get_name()+")\n"+$8->get_name(),"func_def");	
+			$$ = new symbol_info($1->get_name()+" "+$2->get_name()+"("+$4->get_name()+")\n"+$9->get_name(),"func_def");	
 			
 			current_parameters.clear();
 			current_function_name = "";
@@ -139,6 +139,18 @@ func_insert_no_params :
 			st->insert(func_sym);
 		}
  		;
+
+param_insert :
+		{
+			// Insert all parameters into the current function scope
+			for (auto param : current_parameters) {
+				symbol_info *param_sym = new symbol_info(param.second, "ID");
+				param_sym->set_symbol_type("Variable");
+				param_sym->set_return_type(param.first);
+				st->insert(param_sym);
+			}
+		}
+		;
 
 scope_enter :
 		{
