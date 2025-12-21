@@ -139,9 +139,9 @@ func_insert :
 			func_sym->set_symbol_type("Function");
 			func_sym->set_return_type(current_function_return_type);
 			
-			// Check for duplicate function declaration
+			// Check for duplicate declaration (either function or variable with same name)
 			symbol_info *existing = st->lookup(func_sym);
-			if (existing != NULL && existing->get_symbol_type() == "Function") {
+			if (existing != NULL) {
 				log_error("Multiple declaration of function " + current_function_name);
 			}
 			
@@ -158,6 +158,13 @@ func_insert_no_params :
 			symbol_info *func_sym = new symbol_info(current_function_name, "ID");
 			func_sym->set_symbol_type("Function");
 			func_sym->set_return_type(current_function_return_type);
+			
+			// Check for duplicate declaration (either function or variable with same name)
+			symbol_info *existing = st->lookup(func_sym);
+			if (existing != NULL) {
+				log_error("Multiple declaration of function " + current_function_name);
+			}
+			
 			st->insert(func_sym);
 		}
  		;
@@ -532,6 +539,11 @@ expression : logic_expression
 			string left_type = $1->get_return_type();
 			string right_type = $3->get_return_type();
 			
+			// Check if right side is void type
+			if (right_type == "void") {
+				log_error("operation on void type");
+			}
+			
 			// Type checking for assignment - only report specific mismatches
 			if (left_type != "" && right_type != "") {
 				if (left_type == "int" && right_type == "float") {
@@ -589,16 +601,22 @@ simple_expression : term
 			$$ = new symbol_info($1->get_name(),"simp_expr");
 			$$->set_return_type($1->get_return_type());
 	      }
-		  | simple_expression ADDOP term 
-		  {
+	  | simple_expression ADDOP term 
+	  {
 	    	outlog<<"At line no: "<<lines<<" simple_expression : simple_expression ADDOP term "<<endl<<endl;
 			outlog<<$1->get_name()<<$2->get_name()<<$3->get_name()<<endl<<endl;
 			
+			string left_type = $1->get_return_type();
+			string right_type = $3->get_return_type();
+			
+			// Check if either operand is void type
+			if (left_type == "void" || right_type == "void") {
+				log_error("operation on void type");
+			}
+			
 			$$ = new symbol_info($1->get_name()+$2->get_name()+$3->get_name(),"simp_expr");
 			// Result type of addition - promote to float if any operand is float
-			string left = $1->get_return_type();
-			string right = $3->get_return_type();
-			if (left == "float" || right == "float") {
+			if (left_type == "float" || right_type == "float") {
 				$$->set_return_type("float");
 			} else {
 				$$->set_return_type("int");
@@ -622,6 +640,11 @@ term :	unary_expression //term can be void because of un_expr->factor
 			string op = $2->get_name();
 			string left_type = $1->get_return_type();
 			string right_type = $3->get_return_type();
+			
+			// Check if either operand is void type
+			if (left_type == "void" || right_type == "void") {
+				log_error("operation on void type");
+			}
 			
 			if (op == "%") {
 				// Modulus operator - both operands must be integer
@@ -694,13 +717,10 @@ factor	: variable
 			log_error("Undeclared function: " + $1->get_name());
 		} else if (found->get_symbol_type() != "Function") {
 			log_error("A function call cannot be made with non-function type identifier");
-		} else {
-			// Check function return type for void
-			if (found->get_return_type() == "void") {
-				log_error("operation on void type");
-			}
-			
-			// Check argument count and types
+		}
+		
+		// Check argument count and types
+		if (found != NULL && found->get_symbol_type() == "Function") {
 			vector<pair<string, string>>& params = found->get_parameters();
 			if (current_call_arguments.size() != params.size()) {
 				log_error("Inconsistencies in number of arguments in function call: " + $1->get_name());
@@ -710,10 +730,7 @@ factor	: variable
 					string param_type = params[i].first;
 					string arg_type = current_call_arguments[i];
 					if (arg_type != "" && param_type != arg_type) {
-						// Allow numeric type mismatch but report it
-						if (!(is_numeric_type(param_type) && is_numeric_type(arg_type))) {
-							log_error("argument " + to_string(i+1) + " type mismatch in function call: " + $1->get_name());
-						}
+						log_error("argument " + to_string(i+1) + " type mismatch in function call: " + $1->get_name());
 					}
 				}
 			}
