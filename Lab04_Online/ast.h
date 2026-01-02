@@ -23,7 +23,6 @@ protected:
 public:
     ExprNode(string type) : node_type(type) {}
     virtual string get_type() const { return node_type; }
-    virtual ExprNode* clone() const = 0;
 };
 
 // Variable node (for ID references)
@@ -38,10 +37,6 @@ public:
         : ExprNode(type), name(name), index(idx) {}
     
     ~VarNode() { if(index) delete index; }
-    
-    ExprNode* clone() const override {
-        return new VarNode(name, node_type, index ? index->clone() : nullptr);
-    }
     
     bool has_index() const { return index != nullptr; }
     
@@ -83,10 +78,6 @@ private:
 public:
     ConstNode(string val, string type) : ExprNode(type), value(val) {}
     
-    ExprNode* clone() const override {
-        return new ConstNode(value, node_type);
-    }
-    
     string generate_code(ofstream& outcode, map<string, string>& symbol_to_temp,
                         int& temp_count, int& label_count) const override {
         string temp = "t" + to_string(temp_count++);
@@ -110,10 +101,6 @@ public:
     ~BinaryOpNode() {
         delete left;
         delete right;
-    }
-    
-    ExprNode* clone() const override {
-        return new BinaryOpNode(op, left->clone(), right->clone(), node_type);
     }
     
     string generate_code(ofstream& outcode, map<string, string>& symbol_to_temp,
@@ -142,10 +129,6 @@ public:
     
     ~UnaryOpNode() { delete expr; }
     
-    ExprNode* clone() const override {
-        return new UnaryOpNode(op, expr->clone(), node_type);
-    }
-    
     string generate_code(ofstream& outcode, map<string, string>& symbol_to_temp,
                         int& temp_count, int& label_count) const override {
         // Generate code for operand
@@ -171,10 +154,6 @@ public:
     ~AssignNode() {
         delete lhs;
         delete rhs;
-    }
-    
-    ExprNode* clone() const override {
-        return new AssignNode((VarNode*)lhs->clone(), rhs->clone(), node_type);
     }
     
     string generate_code(ofstream& outcode, map<string, string>& symbol_to_temp,
@@ -577,14 +556,6 @@ public:
         }
     }
     
-    ExprNode* clone() const override {
-        FuncCallNode* new_call = new FuncCallNode(func_name, node_type);
-        for (auto arg : arguments) {
-            new_call->add_argument(arg->clone());
-        }
-        return new_call;
-    }
-    
     void add_argument(ExprNode* arg) {
         if (arg) arguments.push_back(arg);
     }
@@ -592,8 +563,14 @@ public:
     string generate_code(ofstream& outcode, map<string, string>& symbol_to_temp,
                         int& temp_count, int& label_count) const override {
         // Generate code for each argument and emit param instructions
+        vector<string> arg_temps;
         for (auto arg : arguments) {
             string arg_temp = arg->generate_code(outcode, symbol_to_temp, temp_count, label_count);
+            arg_temps.push_back(arg_temp);
+        }
+        
+        // Emit param instructions
+        for (const string& arg_temp : arg_temps) {
             outcode << "param " << arg_temp << endl;
         }
         
